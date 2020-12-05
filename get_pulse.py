@@ -249,7 +249,7 @@ def main():
         parser.add_argument('--baud', default=None,
                             help='Baud rate for serial transmission')
         parser.add_argument('--udp', default=None,
-                            help='udp address:port destination for bpm data' 
+                            help='udp address:port destination for bpm data' )
 
         args = parser.parse_args()
         App = getPulseApp(args)

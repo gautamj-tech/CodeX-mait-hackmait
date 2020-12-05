@@ -1,7 +1,7 @@
 numpy==1.18.5
 pandas==1.0.5
 streamlit
-socket==0.1.0
+socket
 opencv-python==4.3.0.36
 sys
 Pillow==2.2.2

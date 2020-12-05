@@ -10,6 +10,7 @@ import pandas as pd
 #from serial import Serial
 import socket
 import sys
+from PIL import Image,ImageEnhance
 import streamlit as st
 
 class getPulseApp(object):
@@ -215,23 +216,45 @@ class getPulseApp(object):
         self.key_handler()
 
 def main():
-    if st.button('click here'):
+
+    if st.sidebar.button('Home'):
+        # 6666ff
+        html_temp = """
+        							<div style="background-color:#6666ff ;padding:20px">
+        							<h1 style="color:white;text-align:center;">Med Assistant</h1>
+        							</div>
+        							"""
+        st.markdown(html_temp, unsafe_allow_html=True)
+        img = Image.open("mede.jfif")
+
+        st.image(img, width=698)
+
+        html_temp = """
+            							<div style="background-color:#6666ff ;padding:10px">
+            							<h1 style="color:white;text-align:center;"></h1>
+            							</div>
+            							"""
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.text(" ")
+        st.text(" ")
+        st.text("Hey! I am here to assist you")
+
+        st.markdown("![Alt Text](https://media.giphy.com/media/SKT4HdqZSSPbaobtPs/giphy.gif)")
+
+        st.success("Go to side bar to Monitor your blood pressure!")
+    if st.sidebar.button('click here to monitor your bloodpressure'):
         parser = argparse.ArgumentParser(description='Webcam pulse detector.')
         parser.add_argument('--serial', default=None,
                             help='serial port destination for bpm data')
         parser.add_argument('--baud', default=None,
                             help='Baud rate for serial transmission')
         parser.add_argument('--udp', default=None,
-                            help='udp address:port destination for bpm data')
+                            help='udp address:port destination for bpm data' 
 
         args = parser.parse_args()
         App = getPulseApp(args)
         while True:
             App.main_loop()
-
-
-
-
 
 
 if __name__ == "__main__":
